@@ -1,9 +1,0 @@
-/* 
-  Base styles are handled via Tailwind CDN in index.html.
-  This file exists to satisfy Vite build requirements.
-*/
-body {
-  margin: 0;
-  padding: 0;
-  background-color: #050505;
-}
