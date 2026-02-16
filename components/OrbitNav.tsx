@@ -16,7 +16,7 @@ const OrbitNav: React.FC = () => {
       <div className="mx-auto flex h-20 max-w-6xl items-center justify-between px-5 md:px-6">
         <a href="#" className="flex items-center gap-3">
           <img src="/orbit-logo.png" alt="Orbit logo" className="h-8 w-8 rounded-full object-cover" />
-          <span className="text-sm font-semibold tracking-[0.18em] text-white">ORBIT</span>
+          <span className="text-base font-semibold tracking-[0.08em] text-white">ORBIT</span>
         </a>
 
         <div className="hidden md:flex items-center gap-8">
