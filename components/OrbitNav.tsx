@@ -3,74 +3,73 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { NavLink } from '../types';
 
 const links: NavLink[] = [
-  { label: 'How it Works', href: '#how-it-works' },
-  { label: 'The Marathon', href: '#marathon' },
-  { label: 'The Pot', href: '#the-pot' },
-  { label: 'Roadmap', href: '#roadmap' },
+  { label: 'How It Works', href: '#how-it-works' },
+  { label: 'Pilot', href: '#marathon' },
+  { label: 'Payouts', href: '#the-pot' },
 ];
 
 const OrbitNav: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-4 bg-orbit-black/50 backdrop-blur-md border-b border-white/5 text-white transition-all duration-300">
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
-        {/* Logo */}
-        <a href="#" className="block group">
-            <span className="text-2xl font-bold tracking-tighter text-white group-hover:text-orbit-green transition-colors">
-              ORBIT
-            </span>
+    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-[#070A10]/75 backdrop-blur-xl">
+      <div className="mx-auto flex h-20 max-w-6xl items-center justify-between px-5 md:px-6">
+        <a href="#" className="flex items-center gap-3">
+          <img src="/orbit-logo.png" alt="Orbit logo" className="h-8 w-8 rounded-full object-cover" />
+          <span className="text-sm font-semibold tracking-[0.18em] text-white">ORBIT</span>
         </a>
 
-        {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-8">
           {links.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className="relative group text-sm font-semibold tracking-wide text-gray-300 hover:text-white transition-colors"
-            >
+            <a key={link.label} href={link.href} className="text-sm text-gray-300 hover:text-white transition-colors duration-200">
               {link.label}
-              <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-orbit-green transition-all duration-300 ease-out group-hover:w-full" />
             </a>
           ))}
         </div>
 
-        {/* Mobile Menu Toggle */}
-        <div className="md:hidden">
-            <button 
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="text-white focus:outline-none"
-            >
-                <div className="space-y-2">
-                    <span className={`block w-8 h-0.5 bg-white transition-transform ${isMenuOpen ? 'rotate-45 translate-y-2.5' : ''}`}></span>
-                    <span className={`block w-8 h-0.5 bg-white transition-opacity ${isMenuOpen ? 'opacity-0' : ''}`}></span>
-                    <span className={`block w-8 h-0.5 bg-white transition-transform ${isMenuOpen ? '-rotate-45 -translate-y-2.5' : ''}`}></span>
-                </div>
-            </button>
+        <div className="hidden md:block">
+          <a
+            href="https://forms.gle/C8jAWuNFT2CbeUaq9"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-full border border-orbit-green/45 bg-orbit-green/10 px-4 py-2 text-xs font-semibold tracking-[0.12em] text-orbit-green hover:bg-orbit-green/20 transition-colors"
+          >
+            Join Waitlist
+          </a>
         </div>
+
+        <button className="md:hidden text-white" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Toggle menu">
+          <span className="block h-0.5 w-6 bg-white mb-1.5" />
+          <span className="block h-0.5 w-6 bg-white mb-1.5" />
+          <span className="block h-0.5 w-6 bg-white" />
+        </button>
       </div>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isMenuOpen && (
-            <motion.div 
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                className="absolute top-20 left-0 right-0 bg-orbit-black/95 backdrop-blur-xl border-b border-white/10 p-6 md:hidden flex flex-col gap-4 shadow-2xl"
-            >
-                 {links.map((link) => (
-                    <a
-                    key={link.label}
-                    href={link.href}
-                    onClick={() => setIsMenuOpen(false)}
-                    className="text-lg font-semibold text-gray-300 hover:text-orbit-green"
-                    >
-                    {link.label}
-                    </a>
-                ))}
-            </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className="md:hidden border-t border-white/10 bg-[#070A10]/95 px-5 pb-5"
+          >
+            <div className="flex flex-col gap-3 pt-4">
+              {links.map((link) => (
+                <a key={link.label} href={link.href} onClick={() => setIsMenuOpen(false)} className="text-gray-300">
+                  {link.label}
+                </a>
+              ))}
+              <a
+                href="https://forms.gle/C8jAWuNFT2CbeUaq9"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setIsMenuOpen(false)}
+                className="mt-1 inline-flex w-fit rounded-full border border-orbit-green/45 bg-orbit-green/10 px-4 py-2 text-xs font-semibold tracking-[0.12em] text-orbit-green"
+              >
+                Join Waitlist
+              </a>
+            </div>
+          </motion.div>
         )}
       </AnimatePresence>
     </nav>
