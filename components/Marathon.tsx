@@ -14,7 +14,7 @@ const Marathon: React.FC = () => {
           <p className="mb-3 text-xs uppercase tracking-[0.2em] text-gray-400">Pilot Program</p>
           <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">Campus cohorts are now open</h2>
           <p className="mt-4 max-w-xl text-base leading-relaxed text-gray-300">
-            We are onboarding early users to test completion rates, payout transparency, and retention in real study cycles.
+            We are onboarding early users to test completion rates, verification reliability, dispute handling, and 30-day recovery behavior.
           </p>
           <a
             href="https://forms.gle/C8jAWuNFT2CbeUaq9"
@@ -39,12 +39,12 @@ const Marathon: React.FC = () => {
               <span className="font-semibold text-white">20-30 students</span>
             </div>
             <div className="flex items-center justify-between border-b border-white/10 pb-3">
-              <span>Challenge length</span>
-              <span className="font-semibold text-white">7-14 days</span>
+              <span>Challenge window</span>
+              <span className="font-semibold text-white">Mon Mar 16 - Fri Mar 20</span>
             </div>
             <div className="flex items-center justify-between">
-              <span>Next intake</span>
-              <span className="font-semibold text-white">March 2026</span>
+              <span>Pilot model</span>
+              <span className="font-semibold text-white">Manual: Revolut + Forms + WhatsApp</span>
             </div>
           </div>
         </motion.div>

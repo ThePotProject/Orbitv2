@@ -6,7 +6,7 @@ const planets: PlanetProps[] = [
   {
     name: 'Manual Campus Pilot',
     phase: 'Phase 1',
-    description: 'Run validated cohorts with manual check-ins and transparent payout communication.',
+    description: 'Run validated cohorts with manual check-ins and transparent 30/70 rule communication.',
     glowColor: 'rgba(255,255,255,0.2)',
   },
   {

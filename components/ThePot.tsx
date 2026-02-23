@@ -11,10 +11,12 @@ const ThePot: React.FC = () => {
           viewport={{ once: true, margin: '-120px' }}
           transition={{ duration: 0.55 }}
         >
-          <p className="mb-3 text-xs uppercase tracking-[0.2em] text-gray-400">Payout Model</p>
+          <p className="mb-3 text-xs uppercase tracking-[0.2em] text-gray-400">30/70 Rule Model</p>
           <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">Transparent by design</h2>
           <p className="mt-4 max-w-xl text-base leading-relaxed text-gray-300">
-            Orbit discloses challenge rules before users join. Deposits are returned to attendees, and no-show deposits are redistributed according to predefined terms.
+            Orbit discloses all challenge terms before users join. On non-completion, users lose an immediate 30%
+            penalty. The remaining 70% is recoverable only by completing a verified follow-up challenge within 30
+            days; otherwise Orbit retains it.
           </p>
         </motion.div>
 
@@ -28,28 +30,29 @@ const ThePot: React.FC = () => {
           <p className="text-sm font-semibold tracking-wide text-white">Example challenge</p>
           <ul className="mt-4 space-y-3 text-sm text-gray-300">
             <li className="flex items-start justify-between gap-4">
-              <span>20 students x €10 deposit</span>
-              <span className="text-white">€200 total pool</span>
+              <span>Deposit per participant</span>
+              <span className="text-white">€20.00</span>
             </li>
             <li className="flex items-start justify-between gap-4">
-              <span>16 show up, 4 no-show</span>
-              <span className="text-white">€40 redistributable</span>
+              <span>If challenge is completed</span>
+              <span className="text-white">€20.00 returned</span>
             </li>
             <li className="flex items-start justify-between gap-4">
-              <span>Deposit returned per attendee</span>
-              <span className="text-white">€10.00</span>
+              <span>If challenge is missed (30% penalty)</span>
+              <span className="text-white">€6.00 charged</span>
             </li>
             <li className="flex items-start justify-between gap-4">
-              <span>Bonus from redistribution (€40/16)</span>
-              <span className="text-white">€2.50</span>
+              <span>Follow-up completed in 30 days</span>
+              <span className="text-white">€14.00 recovered</span>
             </li>
             <li className="flex items-start justify-between gap-4 border-t border-white/10 pt-3">
-              <span>Total received per attendee</span>
-              <span className="text-orbit-green font-semibold">€12.50</span>
+              <span>No follow-up completion in 30 days</span>
+              <span className="text-orbit-green font-semibold">Orbit retains €14.00</span>
             </li>
           </ul>
           <p className="mt-5 text-xs leading-relaxed text-gray-400">
-            Exact payout logic, verification criteria, and exceptions are shown to users before every challenge starts.
+            There is no peer-to-peer payout redistribution. Verification criteria, dispute windows, and exceptions are
+            shown before every challenge starts.
           </p>
         </motion.div>
       </div>

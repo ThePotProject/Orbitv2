@@ -18,7 +18,7 @@ const Hero: React.FC = () => {
           </h1>
           <p className="mt-6 max-w-2xl text-base leading-relaxed text-gray-300 sm:text-lg">
             Orbit helps students follow through on study goals through commitment deposits, social accountability,
-            and transparent payout rules.
+            and transparent 30/70 penalty-recovery rules.
           </p>
 
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">

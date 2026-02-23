@@ -14,8 +14,8 @@ const steps = [
     icon: Target,
   },
   {
-    title: 'Get rewarded',
-    description: 'Receive your full deposit back and a share of no-show deposits.',
+    title: 'Settle outcome',
+    description: 'Complete and recover your deposit. Miss the challenge and lose 30%, with 70% recoverable via a verified follow-up in 30 days.',
     icon: TrendingUp,
   },
 ];

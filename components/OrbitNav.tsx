@@ -5,7 +5,7 @@ import { NavLink } from '../types';
 const links: NavLink[] = [
   { label: 'How It Works', href: '#how-it-works' },
   { label: 'Pilot', href: '#marathon' },
-  { label: 'Payouts', href: '#the-pot' },
+  { label: 'Rules', href: '#the-pot' },
 ];
 
 const OrbitNav: React.FC = () => {
