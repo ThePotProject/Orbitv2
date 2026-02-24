@@ -1,23 +1,14 @@
 import OrbitNav from './components/OrbitNav';
 import Hero from './components/Hero';
-import HowItWorks from './components/HowItWorks';
-import Marathon from './components/Marathon';
-import ThePot from './components/ThePot';
 import Footer from './components/Footer';
-import GalaxyBackground from './components/GalaxyBackground';
 
 export default function App() {
   return (
-    <div className="relative min-h-screen text-white font-sans selection:bg-orbit-green selection:text-orbit-black overflow-hidden bg-[#070A10]">
-      <GalaxyBackground />
-
+    <div className="min-h-screen overflow-x-hidden bg-white text-slate-900 selection:bg-[#0066FF] selection:text-white">
       <OrbitNav />
 
-      <main className="relative z-20 flex flex-col">
+      <main className="relative z-10">
         <Hero />
-        <HowItWorks />
-        <Marathon />
-        <ThePot />
       </main>
 
       <Footer />

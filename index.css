@@ -1,9 +1,98 @@
-/* 
-  Base styles are handled via Tailwind CDN in index.html.
-  This file exists to satisfy Vite build requirements.
-*/
 body {
   margin: 0;
   padding: 0;
-  background-color: #050505;
+  background-color: #ffffff;
+  color: #0f172a;
+  font-family: 'Sora', 'Inter', sans-serif;
+}
+
+.orbit-select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: none !important;
+}
+
+.orbit-select::-ms-expand {
+  display: none;
+}
+
+@keyframes orbit-bounce {
+  0%,
+  100% {
+    transform: translateY(-20%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+.orbit-bounce {
+  animation: orbit-bounce 1s infinite;
+}
+
+.orbit-bounce-delay-1 {
+  animation-delay: 0.1s;
+}
+
+.orbit-bounce-delay-2 {
+  animation-delay: 0.2s;
+}
+
+.orbit-bounce-delay-3 {
+  animation-delay: 0.3s;
+}
+
+.orbit-success-ring {
+  stroke-dasharray: 283;
+  stroke-dashoffset: 283;
+  transition: stroke-dashoffset 0.9s ease-out;
+}
+
+.orbit-card {
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.orbit-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 28px 40px rgba(15, 23, 42, 0.12);
+}
+
+.orbit-card:hover .orbit-success-ring {
+  stroke-dashoffset: 0;
+}
+
+@media (max-width: 767px) {
+  .orbit-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .orbit-success-ring {
+    stroke-dashoffset: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orbit-bounce {
+    animation: none;
+  }
+
+  .orbit-success-ring {
+    transition: none;
+    stroke-dashoffset: 0;
+  }
+
+  .orbit-card {
+    transition: none;
+  }
+
+  .orbit-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
 }
