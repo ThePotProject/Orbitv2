@@ -1,224 +1,237 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Check, ChevronDown, ShieldCheck, Users, Wallet } from 'lucide-react';
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 18 },
+  show: (index: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.52,
+      delay: 0.15 + index * 0.08,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  }),
+};
+
+const confettiPieces = [
+  { left: '10%', delay: 0.0, duration: 2.8, color: '#241D39', w: 10, h: 14, rot: -18 },
+  { left: '22%', delay: 0.35, duration: 2.5, color: '#3A3158', w: 8, h: 12, rot: 12 },
+  { left: '36%', delay: 0.7, duration: 2.9, color: '#4B3E72', w: 10, h: 10, rot: 28 },
+  { left: '48%', delay: 0.15, duration: 2.6, color: '#2B2344', w: 9, h: 14, rot: -26 },
+  { left: '60%', delay: 0.55, duration: 2.7, color: '#584B82', w: 10, h: 12, rot: 8 },
+  { left: '72%', delay: 0.3, duration: 2.55, color: '#30274C', w: 9, h: 11, rot: -12 },
+  { left: '84%', delay: 0.8, duration: 2.85, color: '#413765', w: 8, h: 13, rot: 18 },
+];
 
 const Hero: React.FC = () => {
   return (
-    <section className="px-4 pb-20 pt-36 md:px-8 md:pb-28 md:pt-48">
-      <div className="mx-auto flex w-full max-w-7xl flex-col items-center">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65 }}
-          className="mb-9 flex h-12 items-end gap-3 md:mb-12"
-        >
-          <div className="orbit-bounce orbit-bounce-delay-1 h-5 w-5 rounded-full bg-[#0066FF] md:h-6 md:w-6" />
-          <div className="orbit-bounce orbit-bounce-delay-2 h-5 w-5 rounded-full bg-[#0066FF] md:h-6 md:w-6" />
-          <div className="orbit-bounce orbit-bounce-delay-3 h-5 w-5 rounded-full bg-[#0066FF] md:h-6 md:w-6" />
-        </motion.div>
-
+    <section className="relative overflow-hidden px-5 pb-16 pt-28 sm:pt-32 md:px-8 md:pb-24 md:pt-40">
+      <div className="relative mx-auto flex w-full max-w-7xl flex-col items-center">
         <motion.h1
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.05 }}
-          className="max-w-5xl text-center text-4xl font-bold leading-[1.05] tracking-tight text-slate-900 sm:text-5xl md:text-6xl lg:text-7xl"
+          transition={{ duration: 0.64, ease: [0.22, 1, 0.36, 1] }}
+          className="max-w-6xl text-center text-[2.25rem] font-bold leading-[1.02] tracking-tight text-[#271F3D] sm:text-6xl md:text-7xl lg:text-[5.4rem]"
         >
-          Ready to finally <span className="text-[#0066FF]">commit</span>
-          <br className="hidden sm:block" /> to your goals?
+          Ready to fully commit{' '}
+          <motion.img
+            src="/orbit-logo-mark-main.png"
+            alt="Orbit logo mark"
+            className="inline-block h-14 w-20 align-[-0.25em] sm:h-16 sm:w-24 md:h-20 md:w-28"
+            animate={{ y: [0, -7, 0], rotate: [0, 3, 0] }}
+            transition={{ duration: 4.6, repeat: Infinity, ease: 'easeInOut' }}
+          />{' '}
+          to your goals?
         </motion.h1>
 
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65, delay: 0.12 }}
-          className="mb-14 mt-10 flex w-full max-w-4xl flex-col items-center gap-4 md:mb-20 md:flex-row md:justify-center"
+          transition={{ duration: 0.56, delay: 0.08 }}
+          className="mt-10 flex w-full max-w-5xl flex-col items-center gap-4 md:mt-12 md:flex-row md:gap-3"
         >
-          <span className="whitespace-nowrap text-xl font-semibold text-slate-500 md:text-2xl">I commit to</span>
+          <span className="whitespace-nowrap text-xl font-semibold text-[#3B3259] md:text-2xl">I commit to</span>
 
-          <div className="relative w-full md:min-w-[340px]">
+          <div className="relative w-full md:max-w-[460px]">
             <select
-              defaultValue="3 sessions / week"
-              className="orbit-select h-[60px] w-full appearance-none rounded-2xl border border-slate-200 bg-white py-4 pl-5 pr-12 text-xl font-bold text-slate-900 shadow-sm outline-none transition focus:border-[#0066FF] focus:ring-2 focus:ring-[#0066FF]/30 md:h-[64px] md:text-2xl"
+              defaultValue="4 sessions / week"
+              className="orbit-select h-[66px] w-full rounded-2xl border border-[#3B3259]/30 bg-white px-5 pr-14 text-2xl font-black text-[#271F3D] shadow-[0_16px_30px_rgba(59,50,89,0.08)] outline-none transition focus:border-[#3B3259] focus:ring-2 focus:ring-[#3B3259]/20 md:h-[74px] md:text-3xl"
             >
               <option>3 sessions / week</option>
               <option>4 sessions / week</option>
               <option>5 sessions / week</option>
               <option>6 sessions / week</option>
               <option>7 sessions / week</option>
-              <option>8 sessions / week</option>
-              <option>9 sessions / week</option>
-              <option>10 sessions / week</option>
             </select>
-            <ChevronDown className="pointer-events-none absolute right-4 top-1/2 h-6 w-6 -translate-y-1/2 text-slate-500" />
+            <span className="pointer-events-none absolute right-5 top-1/2 -translate-y-1/2 text-2xl font-black text-[#3B3259]">▾</span>
           </div>
 
           <a
             href="https://forms.gle/C8jAWuNFT2CbeUaq9"
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex h-[60px] w-full flex-nowrap items-center justify-center gap-2 whitespace-nowrap rounded-full bg-[#0066FF] px-8 py-4 text-base font-bold text-white shadow-lg shadow-[#0066FF]/25 transition hover:bg-[#3385FF] md:h-[64px] md:w-auto md:text-lg"
+            className="inline-flex h-[66px] w-full items-center justify-center rounded-2xl bg-[#3B3259] px-8 text-xl font-black text-[#F5F2FE] shadow-[0_16px_30px_rgba(59,50,89,0.22)] transition hover:-translate-y-0.5 hover:bg-[#2F274A] md:h-[74px] md:w-auto md:min-w-[260px] md:text-2xl"
           >
-            Start Pilot
-            <ArrowRight className="h-5 w-5 shrink-0 transition-transform group-hover:translate-x-1" />
+            Join Pilot
           </a>
         </motion.div>
 
-        <section id="how-it-works" className="w-full">
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-7">
+        <section id="community-flow" className="mt-12 w-full md:mt-14">
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-3 md:gap-6">
             <motion.article
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-120px' }}
-              transition={{ duration: 0.5 }}
-              className="orbit-card group flex min-h-[500px] flex-col rounded-[28px] bg-[#0066FF] p-8 text-left text-white md:p-10"
+              custom={0}
+              variants={cardVariants}
+              initial="hidden"
+              animate="show"
+              className="orbit-card-lift flex min-h-[460px] flex-col rounded-[28px] bg-[#111111] p-8 text-white"
             >
-              <div className="flex items-center justify-between gap-5">
-                <span className="text-sm font-semibold uppercase tracking-[0.18em] text-white/80">01. Join</span>
-                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white/20">
-                  <Users className="h-5 w-5 text-white" />
-                </span>
+              <div className="flex items-center">
+                <span className="text-sm font-semibold uppercase tracking-[0.16em] text-white/70">01. Join</span>
               </div>
 
               <div className="mt-8 flex h-[180px] items-center justify-center">
                 <div className="flex items-end gap-4">
-                  <div className="h-16 w-8 rounded-b-lg rounded-t-full bg-white/35 transition-all duration-500 md:translate-y-8 md:opacity-60 md:group-hover:translate-y-0 md:group-hover:opacity-100" />
-                  <div className="h-20 w-10 rounded-b-lg rounded-t-full bg-white transition-all duration-500 md:translate-y-8 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100" />
-                  <div className="h-16 w-8 rounded-b-lg rounded-t-full bg-white/35 transition-all duration-500 md:translate-y-8 md:opacity-60 md:delay-100 md:group-hover:translate-y-0 md:group-hover:opacity-100" />
-                </div>
-              </div>
-
-              <div className="mt-auto pt-6">
-                <h3 className="max-w-[14ch] text-3xl font-bold leading-[1.06]">Join the weekly challenge.</h3>
-                <p className="mt-3 max-w-[26ch] text-lg leading-relaxed text-white/90 md:translate-y-4 md:opacity-0 md:transition-all md:duration-500 md:group-hover:translate-y-0 md:group-hover:opacity-100">
-                  Attend 3 focus sessions to build your streak.
-                </p>
-              </div>
-            </motion.article>
-
-            <motion.article
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-120px' }}
-              transition={{ duration: 0.5, delay: 0.06 }}
-              className="orbit-card group flex min-h-[500px] flex-col rounded-[28px] border border-slate-800/70 bg-[#1C1C1E] p-8 text-left text-white md:p-10"
-            >
-              <div className="flex items-center justify-between gap-5">
-                <span className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-400">02. Deposit</span>
-                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white/10">
-                  <Wallet className="h-5 w-5 text-white" />
-                </span>
-              </div>
-
-              <div className="mt-8 flex h-[180px] items-center justify-center">
-                <div className="rounded-2xl bg-white px-7 py-3 text-3xl font-bold text-[#1C1C1E] shadow-2xl transition-all duration-500 md:translate-y-8 md:scale-75 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:scale-100 md:group-hover:opacity-100">
-                  €20.00
-                </div>
-              </div>
-
-              <div className="mt-auto pt-6">
-                <h3 className="max-w-[14ch] text-3xl font-bold leading-[1.06]">Deposit 20 Euros.</h3>
-                <p className="mt-3 max-w-[26ch] text-lg leading-relaxed text-slate-300 md:translate-y-4 md:opacity-0 md:transition-all md:duration-500 md:group-hover:translate-y-0 md:group-hover:opacity-100">
-                  Held before kickoff as your commitment device.
-                </p>
-              </div>
-            </motion.article>
-
-            <motion.article
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-120px' }}
-              transition={{ duration: 0.5, delay: 0.12 }}
-              className="orbit-card group flex min-h-[500px] flex-col rounded-[28px] border border-slate-200 bg-[#F2F2F7] p-8 text-left text-slate-900 md:p-10"
-            >
-              <div className="flex items-center justify-between gap-5">
-                <span className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">03. Execute</span>
-                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-slate-900/10">
-                  <ShieldCheck className="h-5 w-5 text-slate-700" />
-                </span>
-              </div>
-
-              <div className="mt-8 flex h-[180px] items-center justify-center">
-                <div className="relative h-24 w-24">
-                  <svg className="h-full w-full -rotate-90" viewBox="0 0 100 100">
-                    <circle cx="50" cy="50" r="45" fill="transparent" stroke="currentColor" strokeWidth="6" className="text-slate-300" />
-                    <circle
-                      cx="50"
-                      cy="50"
-                      r="45"
-                      fill="transparent"
-                      stroke="currentColor"
-                      strokeWidth="6"
-                      strokeLinecap="round"
-                      className="orbit-success-ring text-emerald-500"
+                  {[0, 1, 2].map((i) => (
+                    <motion.span
+                      key={i}
+                      className="h-8 w-8 rounded-full bg-white"
+                      animate={{ y: [0, -16, 0] }}
+                      transition={{
+                        duration: 1.35,
+                        delay: i * 0.16,
+                        repeat: Infinity,
+                        ease: 'easeInOut',
+                      }}
                     />
-                  </svg>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <Check className="h-9 w-9 text-emerald-500 transition-all duration-500 md:scale-50 md:opacity-0 md:delay-200 md:group-hover:scale-100 md:group-hover:opacity-100" />
-                  </div>
+                  ))}
                 </div>
               </div>
 
-              <div className="mt-auto pt-6">
-                <h3 className="max-w-[18ch] text-3xl font-bold leading-[1.06]">Complete sessions, get fully refunded.</h3>
-                <p className="mt-3 max-w-[27ch] text-lg leading-relaxed text-slate-600 md:translate-y-4 md:opacity-0 md:transition-all md:duration-500 md:group-hover:translate-y-0 md:group-hover:opacity-100">
-                  Miss the target and the 30% penalty applies instantly.
+              <div className="mt-auto flex min-h-[176px] flex-col">
+                <h3 className="min-h-[3.9rem] text-3xl font-black leading-[1.05]">Join the team.</h3>
+                <p className="mt-3 min-h-[6.2rem] max-w-[31ch] text-lg leading-relaxed text-white/85">
+                  Train with one cohort, keep each other accountable, and turn showing up into a shared routine.
+                </p>
+              </div>
+            </motion.article>
+
+            <motion.article
+              custom={1}
+              variants={cardVariants}
+              initial="hidden"
+              animate="show"
+              className="orbit-card-lift flex min-h-[460px] flex-col rounded-[28px] border border-[#3B3259]/18 bg-white p-8 text-[#271F3D]"
+            >
+              <div className="flex items-center">
+                <span className="text-sm font-semibold uppercase tracking-[0.16em] text-[#3B3259]/75">02. Commit</span>
+              </div>
+
+              <div className="mt-8 flex h-[180px] items-center justify-center">
+                <div className="flex items-end gap-4">
+                  {[0, 1, 2].map((i) => (
+                    <motion.span
+                      key={i}
+                      className="inline-block text-[34px] font-black leading-none text-[#3B3259]"
+                      animate={{ y: [14, -16, -16, 14], opacity: [0, 1, 1, 0] }}
+                      transition={{
+                        duration: 1.6,
+                        delay: i * 0.22,
+                        repeat: Infinity,
+                        ease: 'easeInOut',
+                      }}
+                    >
+                      €
+                    </motion.span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="mt-auto flex min-h-[176px] flex-col">
+                <h3 className="min-h-[3.9rem] text-3xl font-black leading-[1.05]">Commit together.</h3>
+                <p className="mt-3 min-h-[6.2rem] max-w-[31ch] text-lg leading-relaxed text-[#3B3259]">
+                  Everyone enters on equal terms so each member follows the same fair and transparent commitment.
+                </p>
+              </div>
+            </motion.article>
+
+            <motion.article
+              custom={2}
+              variants={cardVariants}
+              initial="hidden"
+              animate="show"
+              className="orbit-card-lift flex min-h-[460px] flex-col rounded-[28px] bg-[#2F274A] p-8 text-[#F5F2FE]"
+            >
+              <div className="flex items-center">
+                <span className="text-sm font-semibold uppercase tracking-[0.16em] text-[#F5F2FE]/80">03. Show Up</span>
+              </div>
+
+              <div className="relative mt-8 h-[180px] overflow-hidden">
+                {confettiPieces.map((piece, i) => (
+                  <motion.span
+                    key={i}
+                    className="absolute rounded-sm"
+                    style={{
+                      left: piece.left,
+                      width: piece.w,
+                      height: piece.h,
+                      backgroundColor: piece.color,
+                    }}
+                    animate={{ y: [-20, 110], opacity: [0, 1, 1, 0], rotate: [piece.rot, piece.rot + 140] }}
+                    transition={{
+                      duration: piece.duration,
+                      delay: piece.delay,
+                      repeat: Infinity,
+                      ease: 'easeInOut',
+                    }}
+                  />
+                ))}
+              </div>
+
+              <div className="mt-auto flex min-h-[176px] flex-col">
+                <h3 className="min-h-[3.9rem] text-3xl font-black leading-[1.05]">Win.</h3>
+                <p className="mt-3 min-h-[6.2rem] max-w-[31ch] text-lg leading-relaxed text-[#F5F2FE]/90">
+                  Complete sessions as a group and keep your full deposit; if you miss, the 30/70 rule is applied.
                 </p>
               </div>
             </motion.article>
           </div>
         </section>
 
-        <section id="pricing" className="mt-10 w-full md:mt-14">
+        <section id="pilot-terms" className="mt-12 w-full md:mt-14">
           <motion.div
-            initial={{ opacity: 0, y: 14 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-120px' }}
-            transition={{ duration: 0.5 }}
-            className="mx-auto max-w-5xl rounded-3xl border border-slate-200 bg-white p-6 shadow-sm md:p-8"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.54, delay: 0.38 }}
+            className="mx-auto max-w-5xl rounded-[30px] border border-[#3B3259]/20 bg-[#ECE7FA] p-6 shadow-[0_24px_48px_rgba(59,50,89,0.1)] md:p-8"
           >
-            <div className="text-left">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Pilot Pricing</p>
-              <h2 className="mt-2 text-2xl font-bold tracking-tight text-slate-900 md:text-3xl">
-                One deposit. Three clear outcomes.
-              </h2>
-              <p className="mt-3 max-w-2xl text-base leading-relaxed text-slate-600">
-                Challenges run on a fixed €20 deposit so outcomes stay simple, predictable, and visible before you join.
-              </p>
-            </div>
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#3B3259]/70">Pilot Terms</p>
+            <h2 className="mt-2 text-2xl font-black tracking-tight text-[#271F3D] md:text-3xl">
+              One challenge. Shared accountability. Three outcomes.
+            </h2>
+            <p className="mt-3 max-w-3xl text-base leading-relaxed text-[#3B3259] md:text-lg">
+              Orbit groups run on a fixed EUR 20 deposit so everyone understands the rules before joining and stays aligned as a
+              team.
+            </p>
 
-            <div className="mt-7 grid grid-cols-1 gap-4 md:grid-cols-3">
-              <article className="group rounded-2xl border border-emerald-200 bg-emerald-50/80 p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
-                <p className="text-sm font-semibold uppercase tracking-[0.14em] text-emerald-700">Complete</p>
-                <p className="mt-2 text-4xl font-bold leading-none text-emerald-600">100%</p>
-                <p className="mt-2 text-base font-semibold text-emerald-800">Refunded</p>
-                <p className="mt-2 text-sm text-emerald-700">You get your full €20 back.</p>
+            <div className="mt-7 grid grid-cols-1 gap-3.5 md:grid-cols-3">
+              <article className="rounded-2xl border border-[#3B3259]/20 bg-white p-5">
+                <p className="text-sm font-bold uppercase tracking-[0.13em] text-[#3B3259]/80">Complete</p>
+                <p className="mt-2 text-4xl font-black leading-none text-[#271F3D]">100%</p>
+                <p className="mt-1.5 text-base font-bold text-[#3B3259]">Refunded</p>
               </article>
 
-              <article className="group rounded-2xl border border-rose-200 bg-rose-50/80 p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
-                <p className="text-sm font-semibold uppercase tracking-[0.14em] text-rose-700">Missed</p>
-                <p className="mt-2 text-4xl font-bold leading-none text-rose-600">30%</p>
-                <p className="mt-2 text-base font-semibold text-rose-800">Penalty</p>
-                <p className="mt-2 text-sm text-rose-700">Immediate loss on non-completion.</p>
+              <article className="rounded-2xl border border-[#3B3259]/20 bg-white p-5">
+                <p className="text-sm font-bold uppercase tracking-[0.13em] text-[#3B3259]/80">Missed</p>
+                <p className="mt-2 text-4xl font-black leading-none text-[#271F3D]">30%</p>
+                <p className="mt-1.5 text-base font-bold text-[#3B3259]">Penalty</p>
               </article>
 
-              <article className="group rounded-2xl border border-sky-200 bg-sky-50/80 p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
-                <p className="text-sm font-semibold uppercase tracking-[0.14em] text-sky-700">Recovery</p>
-                <p className="mt-2 text-4xl font-bold leading-none text-sky-600">70%</p>
-                <p className="mt-2 text-base font-semibold text-sky-800">Can Be Recovered</p>
-                <p className="mt-2 text-sm text-sky-700">Recoverable via verified follow-up in 30 days.</p>
+              <article className="rounded-2xl border border-[#3B3259]/20 bg-white p-5">
+                <p className="text-sm font-bold uppercase tracking-[0.13em] text-[#3B3259]/80">Recovery</p>
+                <p className="mt-2 text-4xl font-black leading-none text-[#271F3D]">70%</p>
+                <p className="mt-1.5 text-base font-bold text-[#3B3259]">Recoverable in 30 days</p>
               </article>
-            </div>
-
-            <div className="mt-5 flex flex-wrap gap-2">
-              <span className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-sm font-semibold text-slate-700">
-                €20 pilot deposit
-              </span>
-              <span className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-sm font-semibold text-slate-700">
-                Terms shown before join
-              </span>
-              <span className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-sm font-semibold text-slate-700">
-                Fast settlement after verification
-              </span>
             </div>
           </motion.div>
         </section>

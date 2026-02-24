@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Orbit is a student accountability platform using transparent commitment challenges to reduce procrastination." />
-    <title>Orbit | Student Accountability</title>
+    <title>Orbit | Pilot Accountability</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -13,9 +13,11 @@
           extend: {
             colors: {
               orbit: {
-                black: '#070A10',
-                green: '#7EEBFF',
-                gray: '#1A2233',
+                bg: '#F5F2FE',
+                primary: '#3B3259',
+                text: '#271F3D',
+                deep: '#2F274A',
+                ink: '#111111',
               },
             },
             fontFamily: {
@@ -32,38 +34,13 @@
 
     <style>
       body {
-        background-color: #070a10;
-        color: white;
+        margin: 0;
+        background-color: #f5f2fe;
+        color: #271f3d;
         overflow-x: hidden;
-      }
-      ::-webkit-scrollbar {
-        width: 8px;
-      }
-      ::-webkit-scrollbar-track {
-        background: #070a10;
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #1a2233;
-        border-radius: 4px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #7eebff;
+        font-family: "Sora", "Inter", sans-serif;
       }
     </style>
-
-    <script type="importmap">
-      {
-        "imports": {
-          "react": "https://esm.sh/react@^19.2.4",
-          "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
-          "react/": "https://esm.sh/react@^19.2.4/",
-          "framer-motion": "https://esm.sh/framer-motion@^12.30.1",
-          "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
-          "vite": "https://esm.sh/vite@^7.3.1",
-          "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.3"
-        }
-      }
-    </script>
     <link rel="stylesheet" href="/index.css" />
   </head>
   <body>
